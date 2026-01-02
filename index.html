@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ФЕЙМ ЛИСТ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Улучшенный снег -->
+    <div class="snow-container"></div>
+
+    <!-- Навигация -->
+    <nav class="neon-nav">
+        <h1 class="logo">Fame list</h1>
+        <div class="nav-links">
+            <button class="nav-btn active" data-target="main">Главная</button>
+            <button class="nav-btn" data-target="list">Фейм Лист</button>
+            <button class="nav-btn login-btn">Войти</button>
+            <button class="nav-btn settings-btn"><i class="fas fa-cog"></i> Настройки</button>
+        </div>
+    </nav>
+
+    <!-- Главная страница -->
+    <section id="main" class="main-section active-section">
+        <div class="container">
+            <div class="title-box">
+                <div class="msc-label">МСК: <span id="current-time">1615.06</span></div>
+                <h2 class="neon-title">ФЕЙМ ЛИСТ СООБЩЕСТВА</h2>
+                <p class="neon-text">
+                    Добро пожаловать в официальный Фейм Лист, созданный уважаемым 
+                    <a href="https://t.me/nothevo" class="neon-link">@nothevo</a>. 
+                    Здесь собраны известные личности нашего сообщества, разделенные по категориям. 
+                    Присоединяйтесь к нашему Telegram-чату, чтобы стать частью списка!
+                </p>
+                <div class="telegram-buttons">
+                    <a href="https://t.me/nothevo" class="neon-btn telegram-btn">
+                        <i class="fab fa-telegram"></i> Наш Telegram-канал
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Фейм Лист -->
+    <section id="list" class="list-section">
+        <div class="container">
+            <div class="search-filter">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Поиск по нику..." class="neon-input">
+                </div>
+                <div class="category-buttons">
+                    <button class="neon-cat-btn active" data-category="all">Все</button>
+                    <button class="neon-cat-btn" data-category="creator">Создатель</button>
+                    <button class="neon-cat-btn" data-category="high">Высокий</button>
+                    <button class="neon-cat-btn" data-category="medium">Средний</button>
+                    <button class="neon-cat-btn" data-category="low">Малый</button>
+                </div>
+            </div>
+
+            <div id="members-container" class="members-grid">
+                <!-- Участники будут загружены через JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно входа -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content neon-box">
+            <span class="close-modal">&times;</span>
+            <h2 class="neon-title">Войти в Фейм Лист</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username" class="form-label">Никнейм</label>
+                    <input type="text" id="username" placeholder="Введите ваш ник" class="neon-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Пароль</label>
+                    <input type="password" id="password" placeholder="Введите пароль" class="neon-input" required>
+                </div>
+                <button type="submit" class="neon-btn submit-btn">Войти / Создать</button>
+            </form>
+            <p class="neon-text-small">* Аккаунт создается автоматически при первом входе</p>
+        </div>
+    </div>
+
+    <!-- Модальное окно настроек -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content neon-box settings-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="neon-title"><i class="fas fa-sliders-h"></i> Настройки сайта</h2>
+            
+            <div class="settings-grid">
+                <div class="setting-card">
+                    <h3 class="setting-title">Цветовая схема</h3>
+                    <div class="color-grid">
+                        <div class="color-option" data-color="#ff0000" data-name="red">
+                            <div class="color-preview red"></div>
+                            <span>Красный</span>
+                        </div>
+                        <div class="color-option" data-color="#00ff00" data-name="green">
+                            <div class="color-preview green"></div>
+                            <span>Зеленый</span>
+                        </div>
+                        <div class="color-option" data-color="#0000ff" data-name="blue">
+                            <div class="color-preview blue"></div>
+                            <span>Синий</span>
+                        </div>
+                        <div class="color-option" data-color="#ffff00" data-name="yellow">
+                            <div class="color-preview yellow"></div>
+                            <span>Желтый</span>
+                        </div>
+                        <div class="color-option" data-color="#ff8800" data-name="orange">
+                            <div class="color-preview orange"></div>
+                            <span>Оранжевый</span>
+                        </div>
+                        <div class="color-option" data-color="#00ffff" data-name="cyan">
+                            <div class="color-preview cyan"></div>
+                            <span>Голубой</span>
+                        </div>
+                        <div class="color-option" data-color="#ff00ff" data-name="pink">
+                            <div class="color-preview pink"></div>
+                            <span>Розовый</span>
+                        </div>
+                        <div class="color-option" data-color="#aa00ff" data-name="purple">
+                            <div class="color-preview purple"></div>
+                            <span>Фиолетовый</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="setting-card">
+                    <h3 class="setting-title">Эффекты</h3>
+                    <div class="toggle-setting">
+                        <div class="toggle-label">
+                            <i class="fas fa-snowflake"></i>
+                            <span>Снегопад</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="snow-toggle" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="toggle-setting">
+                        <div class="toggle-label">
+                            <i class="fas fa-bolt"></i>
+                            <span>Интенсивность неона</span>
+                        </div>
+                        <div class="slider-container">
+                            <input type="range" id="neon-intensity" min="1" max="10" value="5" class="neon-slider">
+                            <span id="intensity-value">5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="setting-card">
+                    <h3 class="setting-title">Заявка на вступление</h3>
+                    <p class="setting-desc">Хочешь попасть в Фейм Лист?</p>
+                    <a href="https://t.me/nothevo" class="neon-btn apply-btn">
+                        <i class="fab fa-telegram"></i> Подать заявку в Telegram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно подробностей -->
+    <div id="details-modal" class="modal">
+        <div class="modal-content neon-box details-content">
+            <span class="close-modal">&times;</span>
+            <div id="details-content"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
